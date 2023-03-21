@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SellerRegisterActivity">
+    
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_back_black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Sign Up"
+            android:textColor="@color/col2"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textSize="28sp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="125dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <!--name-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/nameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_person_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Seller Full Name"
+                    android:inputType="textPersonName|textCapWords"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--phone-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameTil"
+                android:layout_marginTop="5dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/phoneEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_phone_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Phone"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--address-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addressTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phoneTil"
+                android:layout_marginTop="5dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/addressEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_address_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Address"
+                    android:inputType="textPostalAddress"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--email-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addressTil"
+                android:layout_marginTop="5dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/emailEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_email_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--business name-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/businessnameTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailTil"
+                android:layout_marginTop="5dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/businessnameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_address_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Business Name"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--business RegNo-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/businessregnoTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/businessnameTil"
+                android:layout_marginTop="5dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/businessregnoEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_number_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Business Registration Number"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--business description-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/businessdescripTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/businessregnoTil"
+                android:layout_marginTop="5dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/businessdescripEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_edit_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Business Description"
+                    android:inputType="text"
+                    android:padding="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--password-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/businessdescripTil"
+                android:layout_marginTop="5dp"
+                app:passwordToggleEnabled="true"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/passwordEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_password_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--conf password-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cPasswordTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/passwordTil"
+                android:layout_marginTop="5dp"
+                app:passwordToggleEnabled="true"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/cPasswordEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_password_gray"
+                    android:drawablePadding="10dp"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <!--register button-->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/registerBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cPasswordTil"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button01"
+                android:text="SIGN UP"
+                android:textColor="@color/white"/>
+
+            <!-- Registered-->
+            <TextView
+                android:id="@+id/AccountTv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/registerBtn"
+                android:layout_marginTop="6dp"
+                android:padding="10dp"
+                android:text="ALREADY HAVE AN ACCOUNT ?"
+                android:textColor="@color/col1" />
+
+            <TextView
+                android:id="@+id/AccountTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/AccountTv1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:padding="10dp"
+                android:text="@string/Login_Acc"
+                android:textColor="@color/col2"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

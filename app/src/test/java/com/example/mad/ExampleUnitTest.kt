@@ -1,4 +1,4 @@
-package com.example.bridgestore
+package com.example.mad
 
 import org.junit.Test
 

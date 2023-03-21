@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">BridgeStore</string>
+    <string name="app_name">MAD</string>
+    <string name="new_user_signup">SignUp</string>
+    <string name="Login_Acc">LOGIN</string>
 </resources>
