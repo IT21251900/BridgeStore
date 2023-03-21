@@ -1,4 +1,4 @@
-package com.example.bridgestore
+package com.example.mad
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
