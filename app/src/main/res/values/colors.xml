@@ -11,4 +11,7 @@
     <color name="col2">#3b6b83</color>
     <color name="gray01">#c5c5c5</color>
     <color name="gray02">#777777</color>
+    <color name="addform">#C4C4C4</color>
+    <color name="main_color">#3B6B83</color>
+    <color name="second_color">#9C0000</color>
 </resources>

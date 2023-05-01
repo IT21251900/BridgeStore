@@ -13,4 +13,11 @@
     <string name="phone">Phone</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="already_have_an_account">Already Have an Account?</string>
+    <string name="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the.</string>
+    <string name="contact_seller_btn">Contact Seller</string>
+    <string name="product_name">SPICES TURMERIC POWDER</string>
+    <string name="update">Update</string>
+    <string name="remove">Remove</string>
+    <string name="add_product_btn">Add Product</string>
+    <string name="price_tag">RS. 3,200</string>
 </resources>
