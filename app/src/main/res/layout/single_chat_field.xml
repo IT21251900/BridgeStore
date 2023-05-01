@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/singleChatText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10sp"
+        android:layout_margin="10dp"
+        android:paddingBottom="20sp"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/ContactName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20sp"
+                android:paddingTop="10sp"
+                android:paddingRight="20sp"
+                android:paddingBottom="0sp"
+                android:text="@string/ChatName"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/green"/>
+
+            <TextView
+                android:id="@+id/Company"
+                android:layout_below="@id/ContactName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20sp"
+                android:paddingTop="0sp"
+                android:paddingRight="20sp"
+                android:paddingBottom="10sp"
+                android:text="@string/CompanyName"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/Company"
+                android:background="@color/green" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
