@@ -70,7 +70,7 @@
                     android:id="@+id/nameEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sanaja Dineth"
+                    android:text="Avishka Umesh"
                     android:drawablePadding="10dp"
                     android:padding="10dp"
                     android:textSize="20dp"
@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
-                    android:text="sanajana@gamil.com"
+                    android:text="avishka@gamil.com"
                     android:textSize="20dp"
                     android:padding="10dp"
                     android:textColor="@color/black"/>
