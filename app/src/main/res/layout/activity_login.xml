@@ -28,7 +28,8 @@
             android:text="Log in"
             android:textColor="@color/col2"
             android:fontFamily="sans-serif-condensed-medium"
-            android:textSize="28dp" />
+            android:textSize="28sp"
+           />
 
 
 
