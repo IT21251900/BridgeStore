@@ -89,9 +89,9 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="413dp"
-            android:layout_height="79dp"
-            android:layout_marginTop="36dp"
+            android:layout_width="410dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="40dp"
             android:background="@color/main_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
