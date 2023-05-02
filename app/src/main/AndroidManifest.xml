@@ -13,6 +13,21 @@
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".DisplayProductSellerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DisplayProductCustomerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddProduct"
+            android:exported="false" />
+        <activity
             android:name=".CustomerRegisterActivity"
             android:exported="false" />
         <activity
