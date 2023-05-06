@@ -1,0 +1,170 @@
+[
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_placeholder_image.png.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/placeholder_image.png"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/anim_slide_in_right.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/anim/slide_in_right.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_edit_product.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_edit_product.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_chat.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_chat.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_delete_button_background.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/delete_button_background.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_recipient_message_background.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/recipient_message_background.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_signup.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_edit_text_border.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/edit_text_border.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_main.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_sender_message_background.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/sender_message_background.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_seller_registation.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_seller_registation.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_item_product.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/item_product.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_login.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_item_message.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/item_message.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_item_chat_message_recipient.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/item_chat_message_recipient.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_place_holder.png.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/place_holder.png"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_add_product.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_add_product.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_customer_registration.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_customer_registration.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/anim_slide_out_left.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/anim/slide_out_left.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_button_background.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/button_background.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_register_options.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_register_options.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-anydpi-v33_ic_launcher.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-anydpi-v33/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_products_list.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_products_list.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/drawable_app_logo.png.flat",
+        "source": "com.example.bridgestore.app-main-35:/drawable/app_logo.png"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/xml_backup_rules.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_second_start_screen.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_second_start_screen.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/layout_activity_product_view.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/layout/activity_product_view.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.bridgestore.app-merged_res-33:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.bridgestore.app-main-35:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    }
+]
