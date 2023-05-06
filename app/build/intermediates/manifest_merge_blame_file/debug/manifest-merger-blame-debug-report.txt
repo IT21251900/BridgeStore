@@ -6,13 +6,13 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="24"
-8-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml
+8-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="33" />
-9-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml
+9-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-11-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:5:5-80
-11-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:5:22-77
+11-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:5:5-80
+11-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:5:22-77
 12    <uses-permission android:name="android.permission.INTERNET" />
 12-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\HP\.gradle\caches\transforms-3\1a08f49fd9c4a259111a609ed21e52ed\transformed\firebase-auth-21.0.3\AndroidManifest.xml:23:5-67
 12-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\HP\.gradle\caches\transforms-3\1a08f49fd9c4a259111a609ed21e52ed\transformed\firebase-auth-21.0.3\AndroidManifest.xml:23:22-64
@@ -32,109 +32,109 @@
 19-->[androidx.core:core:1.12.0-alpha03] C:\Users\HP\.gradle\caches\transforms-3\a8e08034d52abc158ac2303c286c9b4a\transformed\core-1.12.0-alpha03\AndroidManifest.xml:26:22-94
 20
 21    <application
-21-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:7:5-58:19
+21-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:7:5-58:19
 22        android:allowBackup="true"
-22-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:8:9-35
+22-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:8:9-35
 23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 23-->[androidx.core:core:1.12.0-alpha03] C:\Users\HP\.gradle\caches\transforms-3\a8e08034d52abc158ac2303c286c9b4a\transformed\core-1.12.0-alpha03\AndroidManifest.xml:28:18-86
 24        android:dataExtractionRules="@xml/data_extraction_rules"
-24-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:9:9-65
+24-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:9:9-65
 25        android:debuggable="true"
 26        android:extractNativeLibs="false"
 27        android:fullBackupContent="@xml/backup_rules"
-27-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:10:9-54
+27-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:10:9-54
 28        android:icon="@mipmap/ic_launcher"
-28-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:11:9-43
+28-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:11:9-43
 29        android:label="@string/app_name"
-29-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:12:9-41
+29-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:12:9-41
 30        android:supportsRtl="true"
-30-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:13:9-35
+30-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:13:9-35
 31        android:testOnly="true"
 32        android:theme="@style/Theme.AppCompat.Light" >
-32-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:14:9-53
+32-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:14:9-53
 33        <activity
-33-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:16:9-18:40
+33-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:16:9-18:40
 34            android:name="com.example.bridgestore.CustomerRegistrationActivity"
-34-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:17:13-57
+34-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:17:13-57
 35            android:exported="false" />
-35-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:18:13-37
+35-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:18:13-37
 36        <activity
-36-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:19:9-21:40
+36-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:19:9-21:40
 37            android:name="com.example.bridgestore.RegisterOptionsActivity"
-37-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:20:13-52
+37-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:20:13-52
 38            android:exported="false" />
-38-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:21:13-37
+38-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:21:13-37
 39        <activity
-39-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:22:9-24:40
+39-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:22:9-24:40
 40            android:name="com.example.bridgestore.ChatActivity"
-40-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:23:13-41
+40-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:23:13-41
 41            android:exported="false" />
-41-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:24:13-37
+41-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:24:13-37
 42        <activity
-42-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:25:9-27:40
+42-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:25:9-27:40
 43            android:name="com.example.bridgestore.EditProductActivity"
-43-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:26:13-48
+43-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:26:13-48
 44            android:exported="false" />
-44-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:27:13-37
+44-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:27:13-37
 45        <activity
-45-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:28:9-30:40
+45-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:28:9-30:40
 46            android:name="com.example.bridgestore.ProductViewActivity"
-46-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:29:13-48
+46-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:29:13-48
 47            android:exported="false" />
-47-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:30:13-37
+47-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:30:13-37
 48        <activity
-48-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:31:9-33:40
+48-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:31:9-33:40
 49            android:name="com.example.bridgestore.ProductsListActivity"
-49-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:32:13-49
+49-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:32:13-49
 50            android:exported="false" />
-50-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:33:13-37
+50-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:33:13-37
 51        <activity
-51-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:34:9-36:40
+51-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:34:9-36:40
 52            android:name="com.example.bridgestore.AddProductActivity"
-52-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:35:13-47
+52-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:35:13-47
 53            android:exported="false" />
-53-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:36:13-37
+53-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:36:13-37
 54        <activity
-54-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:37:9-39:40
+54-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:37:9-39:40
 55            android:name="com.example.bridgestore.LoginActivity"
-55-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:38:13-42
+55-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:38:13-42
 56            android:exported="false" />
-56-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:39:13-37
+56-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:39:13-37
 57        <activity
-57-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:40:9-42:40
+57-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:40:9-42:40
 58            android:name="com.example.bridgestore.SellerRegistrationActivity"
-58-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:41:13-55
+58-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:41:13-55
 59            android:exported="false" />
-59-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:42:13-37
+59-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:42:13-37
 60        <activity
-60-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:43:9-45:40
+60-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:43:9-45:40
 61            android:name="com.example.bridgestore.SignupActivity"
-61-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:44:13-43
+61-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:44:13-43
 62            android:exported="false" />
-62-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:45:13-37
+62-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:45:13-37
 63        <activity
-63-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:46:9-54:20
+63-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:46:9-54:20
 64            android:name="com.example.bridgestore.MainActivity"
-64-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:47:13-41
+64-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:47:13-41
 65            android:exported="true" >
-65-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:48:13-36
+65-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:48:13-36
 66            <intent-filter>
-66-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:49:13-53:29
+66-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:49:13-53:29
 67                <action android:name="android.intent.action.MAIN" />
-67-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:50:17-69
-67-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:50:25-66
+67-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:50:17-69
+67-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:50:25-66
 68
 69                <category android:name="android.intent.category.LAUNCHER" />
-69-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:52:17-77
-69-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:52:27-74
+69-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:52:17-77
+69-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:52:27-74
 70            </intent-filter>
 71        </activity>
 72        <activity
-72-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:55:9-57:40
+72-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:55:9-57:40
 73            android:name="com.example.bridgestore.SecondStartScreen"
-73-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:56:13-46
+73-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:56:13-46
 74            android:exported="false" />
-74-->D:\BridgeStore\BridgeStore\app\src\main\AndroidManifest.xml:57:13-37
+74-->D:\Library\Documents\BridgeStore\app\src\main\AndroidManifest.xml:57:13-37
 75        <activity
 75-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\HP\.gradle\caches\transforms-3\1a08f49fd9c4a259111a609ed21e52ed\transformed\firebase-auth-21.0.3\AndroidManifest.xml:27:9-44:20
 76            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
