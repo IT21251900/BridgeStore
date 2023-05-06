@@ -7,6 +7,7 @@ plugins {
 android {
     namespace 'com.example.bridgestore'
     compileSdk 33
+    buildToolsVersion '23.0.1'
     defaultConfig {
         applicationId "com.example.bridgestore"
         minSdk 24
