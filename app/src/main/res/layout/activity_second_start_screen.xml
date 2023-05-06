@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="-160dp"
+    tools:context=".SecondStartScreen"
+    >
+
+    <!-- App Logo -->
+
+    <!-- Welcome Back Text -->
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/app_logo" />
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back"
+        android:textSize="24sp"
+        android:textColor="@color/primaryColor"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <!-- Sign In Text -->
+    <TextView
+        android:id="@+id/signInTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You need to sign in to continue"
+        android:textSize="16sp"
+        android:textColor="#AF9076"
+        android:layout_below="@id/welcomeTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Customer Login Button -->
+    <Button
+        android:id="@+id/customerLoginButton"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:text="Customer Login"
+        android:textColor="#FFFFFF"
+        android:background="@color/primaryColor"
+        android:layout_below="@id/signInTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <!-- Seller Login Button -->
+    <Button
+        android:id="@+id/sellerLoginButton"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:text="Seller Login"
+        android:textColor="#FFFFFF"
+        android:background="@color/primaryColor"
+        android:layout_below="@id/customerLoginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- New to BRIDGE STORE Text -->
+    <TextView
+        android:id="@+id/newToBridgeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New to BRIDGE STORE?"
+        android:textSize="14sp"
+        android:textColor="@color/grey"
+        android:layout_below="@id/sellerLoginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Sign Up Button -->
+    <TextView
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textColor="@color/primaryColor"
+        android:textSize="16sp"
+        android:layout_below="@id/newToBridgeTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+</RelativeLayout>
