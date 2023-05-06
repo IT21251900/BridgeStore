@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    tools:context=".LoginActivity">
+    <!-- App Logo -->
+
+    <!-- "LOG IN" Text -->
+
+    <ImageView
+        android:id="@+id/appLogoImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginEnd="145dp"
+        android:src="@drawable/app_logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        android:textColor="@color/primaryColor"
+        android:textSize="24sp"
+        android:layout_below="@id/appLogoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Email Input Field -->
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Email"
+        android:background="@drawable/edit_text_border"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@id/appLogoImageView"
+        android:layout_marginTop="80dp" />
+
+    <!-- Password Input Field -->
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Password"
+        android:background="@drawable/edit_text_border"
+        android:inputType="textPassword"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@id/emailEditText"
+        android:layout_marginTop="16dp" />
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_background"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@id/passwordEditText"
+        android:text="Login"
+        android:layout_marginTop="32dp" />
+
+    <!-- "New to BRIDGE STORE" Text -->
+    <TextView
+        android:id="@+id/newToBridgeStoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New to BRIDGE STORE"
+        android:textColor="@color/black"
+        android:layout_below="@id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- "Sign Up" Button -->
+    <Button
+        android:id="@+id/signUpButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textColor="@color/primaryColor"
+        android:background="@android:color/transparent"
+        android:layout_below="@id/newToBridgeStoreText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+</RelativeLayout >
