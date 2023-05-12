@@ -104,6 +104,8 @@ class ProductsListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        
+
         profileButton.setOnClickListener(){
             FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener { value->
                 if(value.exists()){
