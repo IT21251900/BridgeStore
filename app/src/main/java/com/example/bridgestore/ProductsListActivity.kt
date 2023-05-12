@@ -84,8 +84,7 @@ class ProductsListActivity : AppCompatActivity() {
                         productList.add(product)
                     }
                     // Set product data to the RecyclerView using the ProductListAdapter
-                    productListAdapter = ProductListAdapter(productList,this)
-                    productRecyclerView.adapter = productListAdapter
+                    
                 }
                 .addOnFailureListener { exception ->
                     // Handle any errors
