@@ -51,6 +51,8 @@ class ProductsListActivity : AppCompatActivity() {
             swipeRefreshLayout.isRefreshing = false
         }
         // Fetch product data from Firestore
+        
+        
         if(getUserRoleFromLocalStorage() == "Seller"){
             db.collection("products")
                 .whereEqualTo("sellerId", FirebaseAuth.getInstance().currentUser?.uid )
@@ -70,7 +72,8 @@ class ProductsListActivity : AppCompatActivity() {
                     // Handle any errors
                     Toast.makeText(this, "Failed to fetch product data: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
-        }else{
+        }
+        else{
             db.collection("products")
                 .get()
                 .addOnSuccessListener { result ->
