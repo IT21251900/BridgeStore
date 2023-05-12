@@ -50,8 +50,6 @@ class ProductViewActivity : AppCompatActivity() {
         contactSellerButton = findViewById(R.id.buyNowButton)
 
 
-
-
         FirebaseFirestore.getInstance().collection("users")
             .document(FirebaseAuth
                 .getInstance().currentUser!!.uid).get()
