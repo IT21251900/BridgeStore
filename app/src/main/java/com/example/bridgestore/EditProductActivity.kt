@@ -87,6 +87,7 @@ class EditProductActivity : AppCompatActivity() {
         }
 
         // Show a progress dialog
+        
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Updating product...")
         progressDialog.setCancelable(false)
