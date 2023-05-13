@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".SignupActivity">
+
+    <TextView
+    android:id="@+id/signUpTitleTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sign Up"
+    android:textSize="24sp"
+    android:textColor="@color/primaryColor"
+    android:layout_marginTop="32dp"
+    android:layout_centerHorizontal="true" />
+    <!-- Background Image -->
+
+    <!-- Name Field -->
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/edit_text_border"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@id/signUpTitleTextView" />
+
+    <!-- Contact Number Field -->
+    <EditText
+        android:id="@+id/contactNumberEditText"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Contact Number"
+        android:inputType="phone"
+        android:background="@drawable/edit_text_border"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/nameEditText" />
+
+    <!-- Address Field -->
+    <EditText
+        android:id="@+id/addressEditText"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Address"
+        android:background="@drawable/edit_text_border"
+        android:inputType="textPostalAddress"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/contactNumberEditText" />
+
+    <!-- User Role Field -->
+    <Spinner
+        android:id="@+id/userRoleSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/edit_text_border"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/addressEditText" />
+
+    <!-- Email Field -->
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edit_text_border"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/userRoleSpinner" />
+
+    <!-- Password Field -->
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Password"
+        android:background="@drawable/edit_text_border"
+        android:inputType="textPassword"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/emailEditText" />
+
+    <!-- Register Button -->
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:background="@color/primaryColor"
+        android:layout_below="@id/passwordEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+</RelativeLayout >
