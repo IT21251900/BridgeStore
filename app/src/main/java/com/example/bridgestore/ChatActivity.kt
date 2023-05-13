@@ -72,19 +72,40 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
         }
     }
 
-    fun sendMessage() {
-       val text:String = messageField.text.toString()
+//    fun sendMessage() {
+//       val text:String = messageField.text.toString()
+//
+//
+//        if (text.isNotBlank()) {
+//            val message = Message(
+//                null,
+//                text,
+//                FirebaseAuth.getInstance().currentUser!!.uid,
+//                Timestamp.now(),
+//            )
+//            db.collection("messages").add(message)
+//            messageField.text.clear()
+//        }
+//    }
 
+    fun sendMessage() {
+        val text:String = messageField.text.toString()
 
         if (text.isNotBlank()) {
-            val message = Message(
-                null,
-                text,
-                FirebaseAuth.getInstance().currentUser!!.uid,
-                Timestamp.now(),
-            )
-            db.collection("messages").add(message)
-            messageField.text.clear()
+            if (text.length <= 20) {
+                val message = Message(
+                    null,
+                    text,
+                    FirebaseAuth.getInstance().currentUser!!.uid,
+                    Timestamp.now(),
+                )
+                db.collection("messages").add(message)
+                messageField.text.clear()
+            } else {
+                Toast.makeText(this, "Message must be 20 characters or less", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(this, "Message cannot be empty", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -114,11 +135,11 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
 
     private fun updateMessage(message: Message, updatedText: String) {
         val m :Message = Message(message.id,updatedText,FirebaseAuth.getInstance().currentUser!!.uid,message.timestamp)
-       FirebaseFirestore.getInstance().collection("messages").document(message.id!!).set(m).addOnCompleteListener() { vals->
-           messages.clear()
-           messageFetcher()
+        FirebaseFirestore.getInstance().collection("messages").document(message.id!!).set(m).addOnCompleteListener() { vals->
+            messages.clear()
+            messageFetcher()
 
-       };
+        };
     }
 
     private fun deleteMessage(message: Message) {
