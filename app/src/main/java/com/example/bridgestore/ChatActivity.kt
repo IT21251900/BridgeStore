@@ -122,10 +122,23 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
     }
 
     private fun deleteMessage(message: Message) {
-        FirebaseFirestore.getInstance().collection("messages").document(message.id!!).delete().addOnCompleteListener() { vals->
-            messages.clear()
-            messageFetcher()
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirm Deletion")
+        builder.setMessage("Are you sure you want to delete this message?")
 
-        };
+        builder.setPositiveButton("YES") { dialog, which ->
+            FirebaseFirestore.getInstance().collection("messages").document(message.id!!).delete().addOnCompleteListener() { vals->
+                messages.clear()
+                messageFetcher()
+            };
+        }
+
+        builder.setNegativeButton("NO") { dialog, which ->
+            // Do nothing
+        }
+
+        val dialog = builder.create()
+        dialog.show()
     }
+
 }
