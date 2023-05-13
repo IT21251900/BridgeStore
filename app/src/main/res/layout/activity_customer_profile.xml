@@ -119,43 +119,33 @@
                 android:layout_marginTop="5dp"/>
 
 
-            <!--business RegNo-->
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/businessregnoTil"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/businessnameTil"
-                android:layout_marginTop="5dp"/>
-
-
-            <!--business description-->
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/businessdescripTil"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/businessregnoTil"
-                android:layout_marginTop="5dp"/>
-
-
             <!--update button-->
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/updateBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/businessdescripTil"
+                android:layout_below="@id/emailTil"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/shape_button01"
                 android:text="UPDATE PROFILE"
                 android:textColor="@color/white"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/deleteBtn"
+                android:id="@+id/logoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/updateBtn"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button01"
+                android:text="LOGOUT"
+                android:textColor="@color/white"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/deleteBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logoutBtn"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/shape_button01"
                 android:text="DELETE PROFILE"

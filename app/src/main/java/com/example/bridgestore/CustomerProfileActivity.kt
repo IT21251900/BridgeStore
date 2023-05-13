@@ -17,6 +17,7 @@ class CustomerProfileActivity : AppCompatActivity() {
     lateinit var phoneText:TextView
     lateinit var emailText:TextView
     lateinit var updateButton :Button
+    lateinit var logoutButton :Button
     lateinit var deleteProfile:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,7 @@ class CustomerProfileActivity : AppCompatActivity() {
         phoneText = findViewById(R.id.phoneEt)
         emailText = findViewById(R.id.emailEt)
         updateButton = findViewById(R.id.updateBtn)
+        logoutButton = findViewById(R.id.logoutBtn)
         deleteProfile = findViewById(R.id.deleteBtn)
 
 
@@ -44,6 +46,13 @@ class CustomerProfileActivity : AppCompatActivity() {
             var intent = Intent(this,CustomerRegistrationActivity::class.java)
             intent.putExtra("uid",FirebaseAuth.getInstance().currentUser!!.uid)
             startActivity(intent)
+        }
+
+        logoutButton.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
 
