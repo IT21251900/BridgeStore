@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -43,16 +44,36 @@ class SellerProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        deeteButton.setOnClickListener(){
-            FirebaseFirestore.getInstance().collection("users")
-                .document(FirebaseAuth.getInstance().currentUser!!.uid)
-                .delete()
-            FirebaseAuth.getInstance().signOut()
-            var intent = Intent(this,LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-
+//        deeteButton.setOnClickListener(){
+//            FirebaseFirestore.getInstance().collection("users")
+//                .document(FirebaseAuth.getInstance().currentUser!!.uid)
+//                .delete()
+//            FirebaseAuth.getInstance().signOut()
+//            var intent = Intent(this,LoginActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//
+//        }
+        deeteButton.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage("Are you sure you want to delete your account?")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { _, _ ->
+                    FirebaseFirestore.getInstance().collection("users")
+                        .document(FirebaseAuth.getInstance().currentUser!!.uid)
+                        .delete()
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
         }
+
 
 
         db.collection("sellers").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener { value->

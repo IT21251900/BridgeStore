@@ -2,6 +2,7 @@ package  com.example.bridgestore
 import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -107,7 +108,10 @@ class SellerRegistrationActivity : AppCompatActivity() {
                 businessRegistrationNumber = businessRegistrationNumber,
                 description = description
             )
-             val firestore = FirebaseFirestore.getInstance()
+
+
+
+        val firestore = FirebaseFirestore.getInstance()
             val updatedSeller = seller.updateSeller(
                 fullName = fullName,
                 phone = phone,
@@ -132,33 +136,66 @@ class SellerRegistrationActivity : AppCompatActivity() {
 
     }
 
-    private fun signUpSeller(email: String, password: String, seller: Seller) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val firebaseUser = auth.currentUser
-                    val userCollection = db.collection("users")
-                    if (firebaseUser != null) {
-                        val user = UserModel(seller.fullName, seller.phone, seller.address, "Seller", email, password)
-                        userCollection.document(firebaseUser.uid)
-                            .set(user)
-                            .addOnSuccessListener {
-
-                                saveSellerToFirestore(seller,firebaseUser.uid)
-                                Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show()
-                            }
-                            .addOnFailureListener { e ->
-                                // Error saving user data
-                                Toast.makeText(this, "Failed to save user data: ${e.message}", Toast.LENGTH_SHORT).show()
-                            }
-                    }
-
-                } else {
-                    // Sign up failed
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                }
-            }
+//    private fun signUpSeller(email: String, password: String, seller: Seller) {
+//        auth.createUserWithEmailAndPassword(email, password)
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    val firebaseUser = auth.currentUser
+//                    val userCollection = db.collection("users")
+//                    if (firebaseUser != null) {
+//                        val user = UserModel(seller.fullName, seller.phone, seller.address, "Seller", email, password)
+//                        userCollection.document(firebaseUser.uid)
+//                            .set(user)
+//                            .addOnSuccessListener {
+//
+//                                saveSellerToFirestore(seller,firebaseUser.uid)
+//                                Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show()
+//                            }
+//                            .addOnFailureListener { e ->
+//                                // Error saving user data
+//                                Toast.makeText(this, "Failed to save user data: ${e.message}", Toast.LENGTH_SHORT).show()
+//                            }
+//                    }
+//
+//                } else {
+//                    // Sign up failed
+//                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//    }
+private fun signUpSeller(email: String, password: String, seller: Seller) {
+    if (seller.fullName.isEmpty() || seller.phone.isEmpty() || seller.address.isEmpty()) {
+        // Display error message and stay on registration page
+        Toast.makeText(this, "Please fill in all required fields.", Toast.LENGTH_SHORT).show()
+        return
     }
+
+    auth.createUserWithEmailAndPassword(email, password)
+        .addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                val firebaseUser = auth.currentUser
+                val userCollection = db.collection("users")
+                if (firebaseUser != null) {
+                    val user = UserModel(seller.fullName, seller.phone, seller.address, "Seller", email, password)
+                    userCollection.document(firebaseUser.uid)
+                        .set(user)
+                        .addOnSuccessListener {
+                            saveSellerToFirestore(seller, firebaseUser.uid)
+                            Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            // Error saving user data
+                            Toast.makeText(this, "Failed to save user data: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                }
+
+            } else {
+                // Sign up failed
+                Toast.makeText(this, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+}
+
 
 
     private fun saveSellerToFirestore(seller: Seller, id:String) {
@@ -172,6 +209,7 @@ class SellerRegistrationActivity : AppCompatActivity() {
             }
             .addOnFailureListener { exception ->
                 Toast.makeText(baseContext, "Error adding seller: ${exception.message}", Toast.LENGTH_SHORT).show()
+
             }
     }
 }
