@@ -71,38 +71,53 @@ class CustomerRegistrationActivity : AppCompatActivity() {
     }
 
     fun signupUser(){
-        var u:UserModel = UserModel(
-            customerName.text.toString(),
-            phoneNumber.text.toString(),
-            "address.text",
-            "Buyer",
-            email.text.toString(),
-            password.text.toString()
-        )
-        if(cPassword.text.toString() == password.text.toString()){
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnCompleteListener() {
-                    value->if(value.isSuccessful){
-                FirebaseFirestore.getInstance()
-                    .collection("users")
-                    .document(FirebaseAuth.getInstance().currentUser!!.uid).set(u).addOnSuccessListener { value->
-                        Toast.makeText(this,"Signup successfully." ,Toast.LENGTH_SHORT).show()
-                        var intent = Intent(this,ProductsListActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }.addOnFailureListener { e ->
-                        Toast.makeText(this,"Failed to save user data." ,Toast.LENGTH_SHORT).show()
-                    }
-            }else{
-                Toast.makeText(this,"Signup failed." ,Toast.LENGTH_SHORT).show()
-            }
+        val name = customerName.text.toString().trim()
+        val phone = phoneNumber.text.toString().trim()
+        val emailStr = email.text.toString().trim()
+        val passwordStr = password.text.toString().trim()
+        val confirmPasswordStr = cPassword.text.toString().trim()
 
-            }.addOnFailureListener { e ->
-                Toast.makeText(this,"Failed to sign up." ,Toast.LENGTH_SHORT).show()
+        if (name.isNotEmpty() && phone.isNotEmpty() && emailStr.isNotEmpty() && passwordStr.isNotEmpty() && confirmPasswordStr.isNotEmpty()) {
+            if (passwordStr == confirmPasswordStr) {
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailStr, passwordStr)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val u = UserModel(
+                                name,
+                                phone,
+                                "address",
+                                "Buyer",
+                                emailStr,
+                                passwordStr
+                            )
+                            FirebaseFirestore.getInstance()
+                                .collection("users")
+                                .document(FirebaseAuth.getInstance().currentUser!!.uid)
+                                .set(u)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Signup successfully.", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this, ProductsListActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Failed to save user data.", Toast.LENGTH_SHORT).show()
+                                }
+                        } else {
+                            Toast.makeText(this, "Signup failed.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "Failed to sign up.", Toast.LENGTH_SHORT).show()
+                    }
+            } else {
+                Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show()
             }
-        }else{
-            Toast.makeText(this,"Passwords do not match.",Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     fun updateUser (){
         var u:UserModel = UserModel(
