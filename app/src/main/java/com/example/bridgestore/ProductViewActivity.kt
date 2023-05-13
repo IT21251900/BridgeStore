@@ -1,5 +1,6 @@
 package com.example.bridgestore
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -127,10 +128,23 @@ class ProductViewActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            deleteButton.setOnClickListener(){
-                FirebaseFirestore.getInstance().collection("products").document(product).delete().addOnCompleteListener(){
-                    finish()
+//            deleteButton.setOnClickListener(){
+//                FirebaseFirestore.getInstance().collection("products").document(product).delete().addOnCompleteListener(){
+//                    finish()
+//                }
+//            }
+            deleteButton.setOnClickListener{
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage("Are you sure you want to delete this product?")
+                builder.setPositiveButton("Yes") { dialog, which ->
+                    FirebaseFirestore.getInstance().collection("products").document(product).delete().addOnCompleteListener{
+                        finish()
+                    }
                 }
+                builder.setNegativeButton("No") { dialog, which ->
+                    // do nothing
+                }
+                builder.show()
             }
         }
     }
