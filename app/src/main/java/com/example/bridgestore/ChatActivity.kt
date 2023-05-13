@@ -92,7 +92,7 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
         val text:String = messageField.text.toString()
 
         if (text.isNotBlank()) {
-            if (text.length <= 20) {
+            if (text.length <= 30) {
                 val message = Message(
                     null,
                     text,
@@ -102,7 +102,7 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
                 db.collection("messages").add(message)
                 messageField.text.clear()
             } else {
-                Toast.makeText(this, "Message must be 20 characters or less", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Message must be 30 characters or less", Toast.LENGTH_SHORT).show()
             }
         } else {
             Toast.makeText(this, "Message cannot be empty", Toast.LENGTH_SHORT).show()
@@ -134,12 +134,15 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
     }
 
     private fun updateMessage(message: Message, updatedText: String) {
-        val m :Message = Message(message.id,updatedText,FirebaseAuth.getInstance().currentUser!!.uid,message.timestamp)
-        FirebaseFirestore.getInstance().collection("messages").document(message.id!!).set(m).addOnCompleteListener() { vals->
-            messages.clear()
-            messageFetcher()
-
-        };
+        if (updatedText.length > 30) {
+            Toast.makeText(this, "Update Failed : Message must be 30 characters or less", Toast.LENGTH_SHORT).show()
+        } else {
+            val m :Message = Message(message.id,updatedText,FirebaseAuth.getInstance().currentUser!!.uid,message.timestamp)
+            FirebaseFirestore.getInstance().collection("messages").document(message.id!!).set(m).addOnCompleteListener() { vals->
+                messages.clear()
+                messageFetcher()
+            }
+        }
     }
 
     private fun deleteMessage(message: Message) {
@@ -148,10 +151,16 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
         builder.setMessage("Are you sure you want to delete this message?")
 
         builder.setPositiveButton("YES") { dialog, which ->
-            FirebaseFirestore.getInstance().collection("messages").document(message.id!!).delete().addOnCompleteListener() { vals->
-                messages.clear()
-                messageFetcher()
-            };
+            FirebaseFirestore.getInstance().collection("messages").document(message.id!!)
+                .delete().addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        messages.clear()
+                        messageFetcher()
+                        Toast.makeText(this, "Message deleted successfully", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Failed to delete message", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
         builder.setNegativeButton("NO") { dialog, which ->
@@ -161,5 +170,6 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
         val dialog = builder.create()
         dialog.show()
     }
+
 
 }
