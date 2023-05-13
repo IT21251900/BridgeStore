@@ -52,11 +52,11 @@
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/dotLineView"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/circlesLayout"
-        android:background="@color/grey" />
+<!--    <View-->
+<!--        android:id="@+id/dotLineView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_below="@id/circlesLayout"-->
+<!--        android:background="@color/grey" />-->
 
   </RelativeLayout>
