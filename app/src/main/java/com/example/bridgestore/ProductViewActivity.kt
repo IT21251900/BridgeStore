@@ -13,7 +13,6 @@ import android.widget.TextView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.example.bridgestore.model.Product
-import com.example.bridgestore.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -58,7 +57,7 @@ class ProductViewActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 value->
                     if(value.exists()){
-                      if(value.getString("userRole") != "Buyer"){
+                      if(value.getString("userRole") == "Buyer"){
                           editButton.visibility= View.GONE
                           deleteButton.visibility = View.GONE
                       }else{

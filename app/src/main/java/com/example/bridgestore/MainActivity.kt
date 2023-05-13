@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
 import android.content.Intent
-import com.example.bridgestore.R
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 

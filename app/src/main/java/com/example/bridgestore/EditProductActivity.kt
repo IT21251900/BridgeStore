@@ -12,7 +12,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.bridgestore.model.Product
-import com.example.bridgestore.R
 import com.google.firebase.firestore.FirebaseFirestore
 
 

@@ -7,155 +7,120 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.bridgestore.R
-import com.example.bridgestore.model.Customer
-import com.example.bridgestore.model.Seller
 import com.example.bridgestore.model.UserModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class CustomerRegistrationActivity : AppCompatActivity() {
 
-    private lateinit var customerFullName: TextInputEditText
-    private lateinit var customerPhone: TextInputEditText
-    private lateinit var customerEmail: TextInputEditText
-    private lateinit var customerPassword: TextInputEditText
-    private lateinit var customerConfirmPassword: TextInputEditText
-    private lateinit var customerSignUpButton: Button
-    private lateinit var pLayout: TextInputLayout
-    private lateinit var cpLayout: TextInputLayout
-    private lateinit var text1: TextView
-    private lateinit var text2: TextView
-    private lateinit var signUpText: TextView
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
-    private lateinit var deleteButton: Button
+class CustomerRegistrationActivity : AppCompatActivity() {
+    lateinit var customerName:TextInputEditText
+    lateinit var phoneNumber : TextInputEditText
+    lateinit var email:TextInputEditText
+    lateinit var password:TextInputEditText
+    lateinit var cPassword:TextInputEditText
+    lateinit var passwordWrapper:TextInputLayout
+    lateinit var cPasswordWrapper :TextInputLayout
+    lateinit var title:TextView
+    lateinit var signupButton : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_registration)
 
-        customerFullName = findViewById(R.id.customerFullName)
-        customerPhone = findViewById(R.id.customerPhone)
-        customerEmail = findViewById(R.id.customerEmail)
-        customerPassword = findViewById(R.id.customerPassword)
-        customerConfirmPassword = findViewById(R.id.customerConfirmPassword)
-        customerSignUpButton = findViewById(R.id.customerSignUpButton)
-        pLayout = findViewById(R.id.customerPasswordLayout)
-        cpLayout = findViewById(R.id.customerConfirmPasswordLayout)
-        text1  = findViewById(R.id.alreadyHaveAccount)
-        text2 = findViewById(R.id.loginText)
-        signUpText = findViewById(R.id.signUpTitle)
 
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
-        //deleteButton = findViewById(R.id.sellerDeleteButton)
+        customerName  = findViewById(R.id.customerFullName)
+        phoneNumber  = findViewById(R.id.customerPhone)
+        email  = findViewById(R.id.customerEmail)
+//        deleteButton = findViewById(R.id.customerDeleteButton)
+        cPassword  = findViewById(R.id.customerConfirmPassword)
+        password  = findViewById(R.id.customerPassword)
+        signupButton = findViewById(R.id.customerSignUpButton)
+        passwordWrapper = findViewById(R.id.passwordWrapper)
+        cPasswordWrapper = findViewById(R.id.cpasswordWrapper)
+        title = findViewById(R.id.tot)
+        
+        signupButton.setOnClickListener(){
+            if(intent.getStringExtra("uid")!=null){
+                updateUser()
+            }else{
+                signupUser()
+            }
+        }
 
-        if(intent.getStringExtra("uid") !=null){
-            signUpText.setText("Update Profile")
-            db.collection("customers").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener { value->
+        if(intent.getStringExtra("uid")!=null){
+            FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener { value->
                 if(value.exists()){
-                    customerFullName.setText(value.getString("fullName"))
-                    customerPhone.setText(value.getString("phone"))
-                    customerEmail.setText(value.getString("email"))
-                    customerPassword.visibility = View.GONE
-                    customerConfirmPassword.visibility = View.GONE
-                    pLayout.visibility = View.GONE
-                    cpLayout.visibility = View.GONE
-                    text1.visibility = View.GONE
-                    text2.visibility = View.GONE
-                    customerSignUpButton.setText("Update")
+                    customerName.setText(value.getString("name"))
+                    phoneNumber.setText(value.getString("contactNumber"))
+                    email.setText(value.getString("email"))
+                    email.isEnabled = false
+                    passwordWrapper.visibility = View.GONE
+                    cPasswordWrapper.visibility  = View.GONE
+                    signupButton.text = "Update"
+                    title.text = "Update Profile"
                 }
             }
         }else{
-          //  deleteButton.visibility = View.GONE
+
         }
 
-        customerSignUpButton.setOnClickListener {
-            val fullName = customerFullName.text.toString()
-            val phone = customerPhone.text.toString()
-            val email = customerEmail.text.toString()
-            val password = customerPassword.text.toString()
 
-            val customer = Customer(
-                "", // Firestore will auto-generate the ID
-                fullName,
-                phone,
-                email,
-                ""
-            )
-            val firestore = FirebaseFirestore.getInstance()
 
-            if(intent.getStringExtra("uid")!=null){
-                firestore.collection("sellers").document(FirebaseAuth.getInstance().currentUser!!.uid)
-                    .set(customer)
-                    .addOnSuccessListener {
-                        Toast.makeText(this,"Updated succesfully", Toast.LENGTH_SHORT)
+    }
+
+    fun signupUser(){
+        var u:UserModel = UserModel(
+            customerName.text.toString(),
+            phoneNumber.text.toString(),
+        "address.text",
+         "Buyer",
+         email.text.toString(),
+         password.text.toString()
+        )
+        if(cPassword.text.toString() == password.text.toString()){
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnCompleteListener() {
+                value->if(value.isSuccessful){
+                    FirebaseFirestore.getInstance()
+                        .collection("users")
+                        .document(FirebaseAuth.getInstance().currentUser!!.uid).set(u).addOnSuccessListener { value->
+                            Toast.makeText(this,"Signup successfully." ,Toast.LENGTH_SHORT)
+                            var intent = Intent(this,ProductsListActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                         }
+            }else{
+                Toast.makeText(this,"Signup failed." ,Toast.LENGTH_SHORT)
+            }
+
+            }
+        }else{
+            Toast.makeText(this,"Passwords does not match",Toast.LENGTH_SHORT)
+        }
+    }
+
+    fun updateUser (){
+        var u:UserModel = UserModel(
+            customerName.text.toString(),
+            phoneNumber.text.toString(),
+            "address.text",
+            "Buyer",
+            email.text.toString(),
+            "password.text.toString()"
+        )
+        FirebaseFirestore
+            .getInstance()
+            .collection("users")
+            .document(FirebaseAuth.getInstance().currentUser!!.uid).set(u).addOnSuccessListener { va->
+                FirebaseFirestore
+                    .getInstance()
+                    .collection("customers")
+                    .document(FirebaseAuth.getInstance().currentUser!!.uid).set(u).addOnSuccessListener { va->
+                        Toast.makeText(this,"Usr updated succesdfully",Toast.LENGTH_SHORT)
                         finish()
                     }
-                    .addOnFailureListener { exception ->
-                        Toast.makeText(this,"Updated succesfully", Toast.LENGTH_SHORT)
-                    }
-            }else{
-                signUpCustomer(email, password, customer)
-            }
-        }
 
-        /*deleteButton.setOnClickListener(){
-            FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).delete().addOnSuccessListener { value->
-                FirebaseFirestore.getInstance().collection("customers").document(FirebaseAuth.getInstance().currentUser!!.uid).delete().addOnSuccessListener { value->
-                    FirebaseAuth.getInstance().signOut()
-                    var intent = Intent(this,LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-        }*/
-    }
-
-    private fun signUpCustomer(email: String, password: String, customer: Customer) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val firebaseUser = auth.currentUser
-                    val userCollection = db.collection("users")
-                    if (firebaseUser != null) {
-                        val user = UserModel(customer.fullName, customer.phone, "Customer", email, password)
-                        userCollection.document(firebaseUser.uid)
-                            .set(user)
-                            .addOnSuccessListener {
-
-                                saveCustomerToFirestore(customer,firebaseUser.uid)
-                                Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show()
-                            }
-                            .addOnFailureListener { e ->
-                                // Error saving user data
-                                Toast.makeText(this, "Failed to save user data: ${e.message}", Toast.LENGTH_SHORT).show()
-                            }
-                    }
-
-                } else {
-                    // Sign up failed
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
-
-
-    private fun saveCustomerToFirestore(customer: Customer, id:String) {
-        db.collection("sellers").document(id)
-            .set(customer)
-            .addOnSuccessListener { documentReference ->
-                Toast.makeText(baseContext, "Customer registration successful.", Toast.LENGTH_SHORT).show()
-                var intent = Intent(this,ProductsListActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            .addOnFailureListener { exception ->
-                Toast.makeText(baseContext, "Error adding customer: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
 }
-
-

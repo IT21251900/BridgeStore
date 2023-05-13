@@ -11,4 +11,9 @@
     <color name="primaryColor">#3B6B83</color>
     <color name="colorPrimary">#3B6B83</color>
     <color name="red">#9C0000</color>
+    <color name="col1">#af9076</color>
+    <color name="col2">#3b6b83</color>
+    <color name="gray01">#c5c5c5</color>
+    <color name="gray02">#777777</color>
+    <color name="red1">#890F0D</color>
 </resources>

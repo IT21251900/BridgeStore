@@ -10,8 +10,6 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.bridgestore.model.UserModel
-import com.example.bridgestore.R
-
 class SignupActivity : AppCompatActivity() {
 
     private lateinit var nameEditText: EditText

@@ -3,6 +3,7 @@ package com.example.bridgestore
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.bridgestore.adapters.ProductListAdapter
 import com.example.bridgestore.model.Product
-import com.example.bridgestore.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -22,6 +22,7 @@ class ProductsListActivity : AppCompatActivity() {
     private lateinit var productListAdapter: ProductListAdapter
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var profileButton:Button
+private  lateinit var  addProductButton :Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_products_list)
@@ -30,6 +31,22 @@ class ProductsListActivity : AppCompatActivity() {
         productRecyclerView.layoutManager = LinearLayoutManager(this)
         swipeRefreshLayout = findViewById(R.id.productsViewRefresher)
         profileButton = findViewById(R.id.profilePicture)
+
+
+        // Find the "Add Product" button by its ID
+         addProductButton = findViewById<Button>(R.id.addProductButton)
+        addProductButton.visibility = View.GONE
+        // Set a click listener on the button
+        addProductButton.setOnClickListener {
+            // Create an Intent to navigate to the AddProductActivity
+            val intent = Intent(this, AddProductActivity::class.java)
+
+            // Start the AddProductActivity
+            startActivity(intent)
+        }
+
+
+
         swipeRefreshLayout.setOnRefreshListener {
             db.collection("products")
                 .get()
@@ -52,6 +69,7 @@ class ProductsListActivity : AppCompatActivity() {
         }
         // Fetch product data from Firestore
         if(getUserRoleFromLocalStorage() == "Seller"){
+            addProductButton.visibility = View.VISIBLE
             db.collection("products")
                 .whereEqualTo("sellerId", FirebaseAuth.getInstance().currentUser?.uid )
                 .get()
@@ -71,6 +89,7 @@ class ProductsListActivity : AppCompatActivity() {
                     Toast.makeText(this, "Failed to fetch product data: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
         }else{
+addProductButton.visibility = View.GONE
             db.collection("products")
                 .get()
                 .addOnSuccessListener { result ->
@@ -88,30 +107,23 @@ class ProductsListActivity : AppCompatActivity() {
                     // Handle any errors
                     Toast.makeText(this, "Failed to fetch product data: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
-        }
-        // Find the "Add Product" button by its ID
-        val addProductButton = findViewById<Button>(R.id.addProductButton)
 
-    // Set a click listener on the button
-        addProductButton.setOnClickListener {
-            // Create an Intent to navigate to the AddProductActivity
-            val intent = Intent(this, AddProductActivity::class.java)
-
-            // Start the AddProductActivity
-            startActivity(intent)
         }
+
 
         profileButton.setOnClickListener(){
             FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener { value->
                 if(value.exists()){
-                    if(value.get("userRole") != "User"){
-                        var intent = Intent(this,CustomerRegistrationActivity::class.java)
-                        intent.putExtra("uid",value.id)
+                    if(value.get("userRole") == "Buyer"){
+                        var intent = Intent(this,CustomerProfileActivity::class.java)
+                        //intent.putExtra("uid",value.id)
                         startActivity(intent)
+                        addProductButton.visibility = View.GONE
                     }else{
-                        var intent = Intent(this,SellerRegistrationActivity::class.java)
-                        intent.putExtra("uid",value.id)
+                        var intent = Intent(this,SellerProfileActivity::class.java)
+                       // intent.putExtra("uid",value.id)
                         startActivity(intent)
+                        addProductButton.visibility = View.VISIBLE
                     }
                 }
              }

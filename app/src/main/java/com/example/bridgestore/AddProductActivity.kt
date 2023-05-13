@@ -12,7 +12,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bridgestore.model.Product
-import com.example.bridgestore.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.io.ByteArrayOutputStream
@@ -36,8 +35,9 @@ class AddProductActivity : AppCompatActivity() {
         productPriceEditText = findViewById(R.id.productPriceTex)
         descriptionEditText = findViewById(R.id.descriptionEditText)
         productImageView = findViewById(R.id.productImage)
-        addProductButton = findViewById(R.id.addProductButton)
-
+        addProductButton = findViewById(R.id.addProductButtonf)
+        addProductButton.text =
+            "Add Product"
         productImageView.setOnClickListener {
             openImagePicker()
         }
@@ -45,6 +45,7 @@ class AddProductActivity : AppCompatActivity() {
         addProductButton.setOnClickListener {
             createProduct()
         }
+
     }
 
     private fun openImagePicker() {

@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.bridgestore.model.Product
 import com.example.bridgestore.model.Seller
 import com.example.bridgestore.model.UserModel
-import com.example.bridgestore.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -37,7 +36,7 @@ class SellerRegistrationActivity : AppCompatActivity() {
     private lateinit var signUpText:TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private lateinit var deleteButton:Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller_registation)
@@ -59,10 +58,12 @@ class SellerRegistrationActivity : AppCompatActivity() {
         signUpText = findViewById(R.id.signUpTitle)
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-        deleteButton = findViewById(R.id.sellerDeleteButton)
-        if(intent.getStringExtra("uid")!=null){
-            signUpText.setText("Update Profile")
+//        deleteButton = findViewById(R.id.sellerDeleteButton)
+
+        if(intent.getStringExtra("uid") !=null){
+            signUpText.text = "Update Profile"
         }
+
         if(intent.getStringExtra("uid") !=null){
             db.collection("sellers").document(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnSuccessListener { value->
                 if(value.exists()){
@@ -83,7 +84,7 @@ class SellerRegistrationActivity : AppCompatActivity() {
                 }
             }
         }else{
-            deleteButton.visibility = View.GONE
+
         }
 
         sellerSignUpButton.setOnClickListener {
@@ -128,16 +129,7 @@ class SellerRegistrationActivity : AppCompatActivity() {
             }
         }
 
-        deleteButton.setOnClickListener(){
-            FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).delete().addOnSuccessListener { value->
-                FirebaseFirestore.getInstance().collection("sellers").document(FirebaseAuth.getInstance().currentUser!!.uid).delete().addOnSuccessListener { value->
-                    FirebaseAuth.getInstance().signOut()
-                    var intent = Intent(this,LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-        }
+
     }
 
     private fun signUpSeller(email: String, password: String, seller: Seller) {
@@ -172,7 +164,7 @@ class SellerRegistrationActivity : AppCompatActivity() {
     private fun saveSellerToFirestore(seller: Seller, id:String) {
         db.collection("sellers").document(id)
             .set(seller)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener { _ ->
                 Toast.makeText(baseContext, "Seller registration successful.", Toast.LENGTH_SHORT).show()
                 var intent = Intent(this,ProductsListActivity::class.java)
                 startActivity(intent)

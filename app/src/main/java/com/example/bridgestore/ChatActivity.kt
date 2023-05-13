@@ -1,114 +1,131 @@
-package com.example.bridgestore
+package  com.example.bridgestore
+
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bridgestore.adapters.MessageAdapter
-import com.example.bridgestore.model.ChatMessage
-import com.example.bridgestore.R
+import com.example.bridgestore.adapters.ChatAdapter
+import com.example.bridgestore.model.Message
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 
-class ChatActivity : AppCompatActivity() {
-    private lateinit var messageInput: EditText
-    private lateinit var sendButton: Button
-    private lateinit var messageRecyclerView: RecyclerView
-    private lateinit var messageAdapter: MessageAdapter
+class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
 
-    private lateinit var firestore: FirebaseFirestore
-    private lateinit var messageCollection: CollectionReference
+    private lateinit var db: FirebaseFirestore
+    private lateinit var chatAdapter: ChatAdapter
+    private lateinit var messages: MutableList<Message>
 
-    private lateinit var auth: FirebaseAuth
-
-    private lateinit var chatId: String
-
-    private lateinit var reciverId:String
+    private lateinit var messageField:EditText
+    private  lateinit var sendButton:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        /*firestore = FirebaseFirestore.getInstance()
+        messageField = findViewById(R.id.send_field)
+        sendButton = findViewById(R.id.send_button)
 
-        messageCollection = firestore.collection("messages")
+        db = FirebaseFirestore.getInstance()
 
-        reciverId  = intent.getStringExtra("sellerId") ?: ""
-        messageInput = findViewById(R.id.messageInput)
-        sendButton = findViewById(R.id.sendButton)
-        messageRecyclerView = findViewById(R.id.messageRecyclerView)
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        messages = mutableListOf()
+        chatAdapter = ChatAdapter(messages, this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = chatAdapter
 
-        messageAdapter = MessageAdapter()
-        messageRecyclerView.adapter = messageAdapter
-        messageRecyclerView.layoutManager = LinearLayoutManager(this)
-
-        // Initialize Firebase Firestore
-        firestore = FirebaseFirestore.getInstance()
-
-        auth = FirebaseAuth.getInstance()
-
-        chatId = intent.getStringExtra("chatId") ?: intent.getStringExtra("sellerId") + auth.currentUser!!.uid
-
-        if (chatId.isNotEmpty()) {
-            messageCollection = firestore.collection("chats").document(chatId).collection("messages")
-
-
-
-            retrieveMessages()
-        } else {
-            Log.e(TAG, "No chat ID provided.")
-        }
-        sendButton.setOnClickListener {
-            val messageText = messageInput.text.toString().trim()
-            if (messageText.isNotEmpty()) {
-                sendMessage(messageText)
-                messageInput.text.clear()
-            }
-        }*/
+        messageFetcher()
     }
 
-    private fun sendMessage(messageText: String) {
-        val currentUser = auth.currentUser
-        val message = hashMapOf(
-            "senderId" to (currentUser?.uid ?: ""),
-            "messageText" to messageText,
-            "timestamp" to FieldValue.serverTimestamp()
-        )
-        var uid = FirebaseAuth.getInstance().currentUser!!.uid
-        messageCollection.document(uid+reciverId).set(message)
-            .addOnSuccessListener {
-                Log.d(TAG, "Message sent successfully.")
-            }
-            .addOnFailureListener {
-                Log.e(TAG, "Failed to send message: ${it.message}")
-            }
-    }
 
-    private fun retrieveMessages() {
-        messageCollection.orderBy("timestamp")
-            .addSnapshotListener(object : EventListener<QuerySnapshot> {
-                override fun onEvent(snapshot: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                    if (error != null) {
-                        Log.e(TAG, "Failed to retrieve messages: ${error.message}")
-                        return
-                    }
-
-                    snapshot?.let { querySnapshot ->
-                        val messages = mutableListOf<ChatMessage>()
-                        for (document in querySnapshot.documents) {
-                            val message = document.toObject(ChatMessage::class.java)
-                            message?.let { messages.add(it) }
-                        }
-                        messageAdapter.setMessages(messages)
-                        messageRecyclerView.scrollToPosition(messageAdapter.itemCount - 1)
-                    }
+    fun messageFetcher(){
+        db.collection("messages")
+            .orderBy("timestamp", Query.Direction.ASCENDING)
+            .addSnapshotListener { value, error ->
+                if (error != null) {
+                    Toast.makeText(this, "Error loading messages: ${error.message}", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
                 }
-            })
+
+                messages.clear()
+                for (document in value!!) {
+                    val message:Message = document.toObject(Message::class.java)
+                    message.id = document.id
+                    messages.add(message)
+                }
+                chatAdapter.notifyDataSetChanged()
+            }
+
+        sendButton.setOnClickListener(){
+            sendMessage()
+        }
     }
 
-    companion object {
-        private const val TAG = "ChatActivity"
+    override fun onItemClick(message: Message) {
+        if (FirebaseAuth.getInstance().currentUser?.uid == message.senderId) {
+            showEditDialog(message)
+        }
+    }
+
+    fun sendMessage() {
+       val text:String = messageField.text.toString()
+
+
+        if (text.isNotBlank()) {
+            val message = Message(
+                null,
+                text,
+                FirebaseAuth.getInstance().currentUser!!.uid,
+                Timestamp.now(),
+            )
+            db.collection("messages").add(message)
+            messageField.text.clear()
+        }
+    }
+
+
+
+    private fun showEditDialog(message: Message) {
+        val builder :AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Edit message")
+
+        val input = EditText(this)
+        input.setText(message.text)
+        builder.setView(input)
+        val dialog = builder.create()
+        builder.setPositiveButton("Update") { _, _ ->
+            val updatedText = input.text.toString()
+            updateMessage(message, updatedText)
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("Delete") { _, _ ->
+            deleteMessage(message,)
+            dialog.dismiss()
+        }
+        builder.setNeutralButton("Cancel", null)
+
+        builder.show()
+    }
+
+    private fun updateMessage(message: Message, updatedText: String) {
+        val m :Message = Message(message.id,updatedText,FirebaseAuth.getInstance().currentUser!!.uid,message.timestamp)
+       FirebaseFirestore.getInstance().collection("messages").document(message.id!!).set(m).addOnCompleteListener() { vals->
+           messages.clear()
+           messageFetcher()
+
+       };
+    }
+
+    private fun deleteMessage(message: Message) {
+        FirebaseFirestore.getInstance().collection("messages").document(message.id!!).delete().addOnCompleteListener() { vals->
+            messages.clear()
+            messageFetcher()
+
+        };
     }
 }

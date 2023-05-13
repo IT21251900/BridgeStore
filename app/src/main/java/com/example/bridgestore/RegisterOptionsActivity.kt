@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.example.bridgestore.R
 
 class RegisterOptionsActivity : AppCompatActivity() {
 
@@ -23,11 +22,11 @@ class RegisterOptionsActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.loginSingupButton)
 
         customerRegisterButton.setOnClickListener(){
-            var intent = Intent(this,CustomerRegistrationActivity::class.java)
+            var intent = Intent(this,SellerRegistrationActivity::class.java)
             startActivity(intent)
         }
         sellerRegisterButton.setOnClickListener(){
-            var intent = Intent(this,SellerRegistrationActivity::class.java)
+            var intent = Intent(this,CustomerRegistrationActivity::class.java)
             startActivity(intent)
         }
         loginButton.setOnClickListener(){

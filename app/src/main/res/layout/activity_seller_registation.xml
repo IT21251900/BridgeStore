@@ -227,17 +227,17 @@
             android:textSize="16sp"
             android:backgroundTint="@color/colorPrimary"
             app:layout_constraintTop_toBottomOf="@+id/sellerConfirmPasswordLayout" />
-        <Button
-            android:id="@+id/sellerDeleteButton"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="16dp"
-            android:text="DELETE PROFILE"
-            android:background="@drawable/button_background"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:backgroundTint="@color/red"
-            app:layout_constraintTop_toBottomOf="@+id/sellerSignUpButton" />
+<!--        <Button-->
+<!--            android:id="@+id/sellerDeleteButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="54dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="DELETE PROFILE"-->
+<!--            android:background="@drawable/button_background"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textSize="16sp"-->
+<!--            android:backgroundTint="@color/red"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/sellerSignUpButton" />-->
         <!-- Already have an account -->
         <TextView
             android:id="@+id/alreadyHaveAccount"
@@ -246,7 +246,7 @@
             android:text="ALREADY HAVE AN ACCOUNT"
             android:textColor="#AF9076"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/sellerDeleteButton"
+            app:layout_constraintTop_toBottomOf="@+id/sellerSignUpButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp" />
