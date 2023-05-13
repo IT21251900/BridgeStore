@@ -74,29 +74,33 @@ class CustomerRegistrationActivity : AppCompatActivity() {
         var u:UserModel = UserModel(
             customerName.text.toString(),
             phoneNumber.text.toString(),
-        "address.text",
-         "Buyer",
-         email.text.toString(),
-         password.text.toString()
+            "address.text",
+            "Buyer",
+            email.text.toString(),
+            password.text.toString()
         )
         if(cPassword.text.toString() == password.text.toString()){
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnCompleteListener() {
-                value->if(value.isSuccessful){
-                    FirebaseFirestore.getInstance()
-                        .collection("users")
-                        .document(FirebaseAuth.getInstance().currentUser!!.uid).set(u).addOnSuccessListener { value->
-                            Toast.makeText(this,"Signup successfully." ,Toast.LENGTH_SHORT)
-                            var intent = Intent(this,ProductsListActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                         }
+                    value->if(value.isSuccessful){
+                FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(FirebaseAuth.getInstance().currentUser!!.uid).set(u).addOnSuccessListener { value->
+                        Toast.makeText(this,"Signup successfully." ,Toast.LENGTH_SHORT).show()
+                        var intent = Intent(this,ProductsListActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }.addOnFailureListener { e ->
+                        Toast.makeText(this,"Failed to save user data." ,Toast.LENGTH_SHORT).show()
+                    }
             }else{
-                Toast.makeText(this,"Signup failed." ,Toast.LENGTH_SHORT)
+                Toast.makeText(this,"Signup failed." ,Toast.LENGTH_SHORT).show()
             }
 
+            }.addOnFailureListener { e ->
+                Toast.makeText(this,"Failed to sign up." ,Toast.LENGTH_SHORT).show()
             }
         }else{
-            Toast.makeText(this,"Passwords does not match",Toast.LENGTH_SHORT)
+            Toast.makeText(this,"Passwords do not match.",Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -118,7 +122,8 @@ class CustomerRegistrationActivity : AppCompatActivity() {
                     .collection("customers")
                     .document(FirebaseAuth.getInstance().currentUser!!.uid).set(u).addOnSuccessListener { va->
                         Toast.makeText(this,"Usr updated succesdfully",Toast.LENGTH_SHORT)
-                        finish()
+                        val intent = Intent(this, CustomerProfileActivity::class.java)
+                        startActivity(intent)
                     }
 
             }
