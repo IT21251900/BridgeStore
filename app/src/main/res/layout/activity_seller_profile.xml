@@ -198,10 +198,20 @@
                 android:textColor="@color/white"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/deleteBtn"
+                android:id="@+id/logoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/updateBtn"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button01"
+                android:text="LOGOUT"
+                android:textColor="@color/white"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/deleteBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logoutBtn"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/shape_button01"
                 android:text="DELETE PROFILE"
