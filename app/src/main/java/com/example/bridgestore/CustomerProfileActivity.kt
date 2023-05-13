@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import org.w3c.dom.Text
@@ -47,12 +48,24 @@ class CustomerProfileActivity : AppCompatActivity() {
 
 
         deleteProfile.setOnClickListener(){
-            FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).delete().addOnCompleteListener()
-    {
-                _->FirebaseAuth.getInstance().signOut()
-        var intent = Intent(this,LoginActivity::class.java)
-        startActivity(intent)
-        finish()
-    }    }
+            AlertDialog.Builder(this)
+                .setTitle("Delete Profile")
+                .setMessage("Are you sure you want to delete your profile?")
+                .setPositiveButton("Delete") { dialog, _ ->
+                    FirebaseFirestore.getInstance().collection("users")
+                        .document(FirebaseAuth.getInstance().currentUser!!.uid).delete()
+                        .addOnCompleteListener() { _ ->
+                            FirebaseAuth.getInstance().signOut()
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Cancel") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        }
     }
 }
