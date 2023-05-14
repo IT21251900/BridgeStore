@@ -92,7 +92,7 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
         val text:String = messageField.text.toString()
 
         if (text.isNotBlank()) {
-            if (text.length <= 30) {
+            if (text.length <= 120) {
                 val message = Message(
                     null,
                     text,
@@ -102,7 +102,7 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
                 db.collection("messages").add(message)
                 messageField.text.clear()
             } else {
-                Toast.makeText(this, "Message must be 30 characters or less", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Message must be 120 characters or less", Toast.LENGTH_SHORT).show()
             }
         } else {
             Toast.makeText(this, "Message cannot be empty", Toast.LENGTH_SHORT).show()
@@ -134,8 +134,8 @@ class ChatActivity : AppCompatActivity(), ChatAdapter.OnItemClickListener {
     }
 
     private fun updateMessage(message: Message, updatedText: String) {
-        if (updatedText.length > 30) {
-            Toast.makeText(this, "Update Failed : Message must be 30 characters or less", Toast.LENGTH_SHORT).show()
+        if (updatedText.length > 120) {
+            Toast.makeText(this, "Update Failed : Message must be 120 characters or less", Toast.LENGTH_SHORT).show()
         } else {
             val m :Message = Message(message.id,updatedText,FirebaseAuth.getInstance().currentUser!!.uid,message.timestamp)
             FirebaseFirestore.getInstance().collection("messages").document(message.id!!).set(m).addOnCompleteListener() { vals->
